@@ -19,6 +19,6 @@ length=$(jq '. | length' $filteredInputFile)
 for x in $(seq 0 $(($length - 1))); do
 	noP=$(jq ".[$x].body" $filteredInputFile | ./count-paren.sh)
 	if [ $noP -gt 0 ]; then
-		python -c 'print(")" * $noP)' | ./post-reddit-comment.sh
+		jq -n --arg text "$(python -c 'print(")" * $noP)')\n\n---\nThis message is auto generated" '{ api_type: "json", text: $text }'
 	fi
 done
