@@ -2,7 +2,7 @@
 source user-secrets.sh
 curl \
 	-X POST \
-	-A "Parnenthesis by HugoNikanor" \
+	-A "bash:paren-bot:v0.1 by /u/hugonikanor" \
 	-d 'grant_type=password' \
 	-d 'username=parenthesis-bot' \
 	-d "password=$password" \
