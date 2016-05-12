@@ -2,7 +2,7 @@
 source user-secrets.sh
 source oauth-death-time.sh
 
-if [ $(date +%s) -gt $oauthDeath ]; then
+if [ "$(date +%s)" -gt $oauthDeath ]; then
 	curl \
 		-X POST \
 		-A "bash:paren-bot:v0.1 by /u/hugonikanor" \
@@ -12,8 +12,8 @@ if [ $(date +%s) -gt $oauthDeath ]; then
 		--user "$user" \
 		https://www.reddit.com/api/v1/access_token \
 		> oauth_key.json
-	"oauthDeath=$(( $(jq '.expries_in' oauth_key.json) + $(date +%s) ))" > oauth-death-time.sh
+	echo "oauthDeath=$(( $(jq -r '.expires_in' oauth_key.json) + $(date +%s) ))" > oauth-death-time.sh
 
 fi
 
-jq '.access_token' oauth_key.json
+jq -r '.access_token' oauth_key.json
