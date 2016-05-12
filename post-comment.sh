@@ -3,7 +3,7 @@
 parent=$1
 text=$2
 curl \
-	-H "Authorization: bearer $(jq -r '.access_token' oauth_key.json)" \
+	-H "Authorization: bearer $(./get-oauth-key.sh)" \
 	-A "Parnenthesis by HugoNikanor" \
 	-d "parent=$parent" \
 	-d "text=$text" \
