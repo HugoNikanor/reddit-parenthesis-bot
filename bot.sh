@@ -1,6 +1,6 @@
 #!/bin/bash
 
-url="https://www.reddit.com/r/test/comments.json"
+url="https://www.reddit.com/r/$1/comments.json"
 
 time=$(date +%s)
 rawInputFile="/tmp/$time-comments.json"
