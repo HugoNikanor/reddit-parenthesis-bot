@@ -18,7 +18,7 @@ length=$(jq '. | length' $filteredInputFile)
 	echo $filteredInputFile
 for x in $(seq 0 $(($length - 1))); do
 	noP=$(jq ".[$x].body" $filteredInputFile | ./count-paren.sh)
-	emoticonResp=$(jq ".[$x].body" $filteredInputFile | grep -o ':(' | sed 's/[()]//g')
+	emoticonResp=$(jq ".[$x].body" $filteredInputFile | grep -o '\\\?:\?(\\\?' | sed 's/[()]//g' | tr -d '\n')
 	echo "$noP"
 	if [ $noP -gt 0 ]; then
 		./post-comment.sh \
