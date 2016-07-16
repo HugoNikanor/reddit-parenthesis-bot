@@ -11,7 +11,7 @@ source last-check.sh
 
 jq "[.data.children[].data | select(.created_utc>$lastCheck)]" $rawInputFile > $filteredInputFile
 
-echo "lastCheck=$time" > "`pwd`/last-check.sh""
+echo "lastCheck=$time" > "`pwd`/last-check.sh"
 
 length=$(jq '. | length' $filteredInputFile)
 
