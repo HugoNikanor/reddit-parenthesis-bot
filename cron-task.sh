@@ -1,5 +1,6 @@
 #!/bin/bash
-cd /home/parenthesis-bot/parenthesisbot
+subreddit="parenthesisbot"
+cd "/home/parenthesis-bot/$subreddit"
 date >> /tmp/cron-log
-./bot.sh parenthesisbot >> /tmp/cron-log
+./bot.sh "$subreddit" >> /tmp/cron-log
 
