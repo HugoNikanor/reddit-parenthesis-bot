@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# $1 should be the subreddit
+
 url="https://www.reddit.com/r/$1/comments.json"
 
 time=$(date +%s)
@@ -11,7 +13,8 @@ source last-check.sh
 
 jq "[.data.children[].data | select(.created_utc>$lastCheck)]" $rawInputFile > $filteredInputFile
 
-echo "lastCheck=$time" > "`pwd`/last-check.sh"
+path=`pwd`/last-check.sh
+echo "lastCheck=$time" > "$path"
 
 length=$(jq '. | length' $filteredInputFile)
 
