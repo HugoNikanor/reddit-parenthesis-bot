@@ -1,3 +1,3 @@
 #!/bin/bash
 input="$(cat /dev/stdin)"
-echo $(( $(grep -o '(' <<< "$input" | wc -l) - $(grep -o ')' <<< $input | wc -l) ))
+echo $(tr -d '\n\r' <<< $input | sed ':loop; s/([^()]*)//g; t loop' | grep -o '(' | wc -l)
