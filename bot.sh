@@ -25,8 +25,8 @@ for x in $(seq 0 $(($length - 1))); do
 	echo "$noP"
 	respBody=""
 	if [ $noP -gt 15 ]; then
-		[ -n "$emoticonResp" ] && respBody+="	 ▀  ▀ \n"
-		respBody+="	▀▄▄▄▄▀\nSeriously, stop spamming"
+		[ -n "$emoticonResp" ] && respBody+=$'	 ▀  ▀ \n'
+		respBody+=$'	▀▄▄▄▄▀\nSeriously, stop spamming'
 	elif [ $noP -gt 0 ]; then
 		respBody="$emoticonResp$(printf ')%.0s' $(seq 1 $noP))"
 	fi
