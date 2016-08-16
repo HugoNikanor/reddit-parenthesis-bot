@@ -26,7 +26,7 @@ for x in $(seq 0 $(($length - 1))); do
 	respBody=""
 	if [ $noP -gt 15 ]; then
 		[ -n "$emoticonResp" ] && respBody+=$'	 ▀  ▀ \n'
-		respBody+=$'	▀▄▄▄▄▀\nThat was '"$noP"' parenthesis, maybe you should calm down a bit. May I recommend /r/parenthesisbot?"
+		respBody+=$'	▀▄▄▄▄▀\nThat was '"$noP"' parenthesis, maybe you should calm down a bit. May I recommend /r/parenthesisbot?'
 	elif [ $noP -gt 0 ]; then
 		respBody="$emoticonResp$(printf ')%.0s' $(seq 1 $noP))"
 	fi
